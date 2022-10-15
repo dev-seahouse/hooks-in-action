@@ -2,24 +2,22 @@
   "root": true,
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": [
     "prettier",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/jsx-runtime"
   ],
   "settings": {
     "react": {
       "version": "detect"
     }
-  },
-  "rules": {
-    // because vite react-plugins will auto import react
-    "react/react-in-jsx-scope": "off"
   }
 }
