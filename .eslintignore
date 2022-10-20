@@ -1,0 +1,10 @@
+# whitelist (dot files are ignored by default)
+!.storybook 
+!.eslintrc.js
+# ignore list
+/build/**
+/coverage/**
+/docs/**
+/jsdoc/**
+/tmp/**
+test.js

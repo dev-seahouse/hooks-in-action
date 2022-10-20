@@ -12,7 +12,7 @@ interface INavItem {
 
 function NavItem({ linkTo, children }: INavItem) {
   return (
-    <li className={'inline-block ml-0 mt-0 mb-0 mr-4 p-0'}>
+    <li className={'ml-0 mt-0 mb-0 mr-4 inline-block p-0'}>
       <Link to={linkTo} className="btn btn-header">
         {children}
       </Link>
