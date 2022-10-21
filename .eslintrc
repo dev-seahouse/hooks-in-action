@@ -1,19 +1,35 @@
 {
-  "root": true,
   "env": {
     "browser": true,
     "es6": true,
     "node": true
   },
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
   "extends": [
     "eslint:recommended",
+    "plugin:unicorn/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:prettier/recommended"
+    "plugin:react/jsx-runtime", // must be before react plugins
+    "plugin:prettier/recommended" // must be last
   ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "reportUnusedDisableDirectives": true,
+  "root": true,
+  "rules": {
+    "unicorn/expiring-todo-comments": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/no-array-callback-reference": "off",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/no-array-method-this-argument": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/no-for-loop": "off"
+  },
   "settings": {
     "react": {
       "version": "detect"
