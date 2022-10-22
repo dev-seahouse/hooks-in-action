@@ -12,7 +12,7 @@ interface INavItem {
 
 function NavItem({ linkTo, children }: INavItem) {
   return (
-    <li className="ml-0 mt-0 mb-0 mr-4 inline-block p-0">
+    <li className="my-0 ml-0 mr-4 inline-block p-0">
       <Link to={linkTo} className="btn btn-header">
         {children}
       </Link>
@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header className="m-0 flex items-center justify-center bg-primary p-4">
+        <header className="m-0 flex items-center justify-center p-4">
           <nav>
             <ul className="m-0 list-none p-0">
               <NavItem linkTo="/bookings">
