@@ -5,8 +5,10 @@
     "node": true
   },
   "extends": [
-    "plugin:tailwindcss/recommended",
     "eslint:recommended",
+    "plugin:tailwindcss/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
     "plugin:unicorn/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
@@ -14,12 +16,20 @@
     "plugin:react/jsx-runtime", // must be before react plugins
     "plugin:prettier/recommended" // must be last
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": true,
+      "typescript": true
+    }
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
   "reportUnusedDisableDirectives": true,
   "root": true,
   "rules": {
@@ -30,11 +40,101 @@
     "unicorn/no-array-method-this-argument": "off",
     "unicorn/no-array-reduce": "off",
     "unicorn/no-for-loop": "off",
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "checkFilenames": false,
+        "checkDefaultAndNamespaceImports": false,
+        "checkShorthandImports": false,
+        "extendDefaultReplacements": false,
+        "replacements": {
+          "whitelist": {
+            "include": true
+          },
+          "blacklist": {
+            "exclude": true
+          },
+          "master": {
+            "main": true
+          },
+          "slave": {
+            "secondary": true
+          },
+
+          // Not part of `eslint-plugin-unicorn`
+          "application": {
+            "app": true
+          },
+          "applications": {
+            "apps": true
+          },
+
+          // Part of `eslint-plugin-unicorn`
+          "arr": {
+            "array": true
+          },
+          "e": {
+            "error": true,
+            "event": true
+          },
+          "el": {
+            "element": true
+          },
+          "elem": {
+            "element": true
+          },
+          "len": {
+            "length": true
+          },
+          "msg": {
+            "message": true
+          },
+          "num": {
+            "number": true
+          },
+          "obj": {
+            "object": true
+          },
+          "opts": {
+            "options": true
+          },
+          "param": {
+            "parameter": true
+          },
+          "params": {
+            "parameters": true
+          },
+          "prev": {
+            "previous": true
+          },
+          "req": {
+            "request": true
+          },
+          "res": {
+            "response": true,
+            "result": true
+          },
+          "ret": {
+            "returnValue": true
+          },
+          "str": {
+            "string": true
+          },
+          "temp": {
+            "temporary": true
+          },
+          "tmp": {
+            "temporary": true
+          },
+          "val": {
+            "value": true
+          },
+          "err": {
+            "error": true
+          }
+        }
+      }
+    ],
     "tailwindcss/no-custom-classname": "off"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
   }
 }
