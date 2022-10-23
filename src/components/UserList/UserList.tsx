@@ -1,9 +1,10 @@
-import { useState } from 'react'
-import classNames from 'classnames/dedupe'
-import { users } from '../../static.json'
+import { useState } from 'react';
+import classNames from 'classnames/dedupe';
+import { users } from '../../static.json';
 
-function UserList() {
-  const [selectedUserId, setSelectedUserId] = useState(1)
+export function UserList() {
+  const [selectedUserId, setSelectedUserId] = useState(1);
+
   return (
     <ul className="users items-list-nav">
       {users.map(({ id, name }) => (
@@ -17,7 +18,5 @@ function UserList() {
         </li>
       ))}
     </ul>
-  )
+  );
 }
-
-export default UserList

@@ -5,6 +5,7 @@
  the semi will be back to true.
  if you delete this file, there will be double quotes error loop 
 */
+
 module.exports = {
   trailingComma: 'es5',
   tabWidth: 2,

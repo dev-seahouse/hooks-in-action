@@ -1,4 +1,4 @@
-import { users } from '../static.json'
+import { users } from '../static.json';
 export default function UserPicker() {
   return (
     <select>
@@ -8,5 +8,5 @@ export default function UserPicker() {
         </option>
       ))}
     </select>
-  )
+  );
 }

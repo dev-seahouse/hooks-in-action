@@ -10,6 +10,9 @@ export default defineConfig({
       fix: true, // https://www.npmjs.com/package/vite-plugin-eslint
     }),
   ],
+  build: {
+    cssCodeSplit: true, // false to produce 1 css file
+  },
   optimizeDeps: {
     include: ['react/jsx-runtime'],
   },

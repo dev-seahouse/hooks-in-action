@@ -1,7 +1,7 @@
 import React from 'react';
 
-interface Props {}
+export interface Props {}
 
-export default function Button() {
+export function Button() {
   return <div>Button</div>;
 }

@@ -7,8 +7,8 @@ type User = {
   name: string;
 };
 
-interface HeaderProps {
-  user?: User;
+interface HeaderProperties {
+  user: User | undefined;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
@@ -19,7 +19,7 @@ export const Header = ({
   onLogin,
   onLogout,
   onCreateAccount,
-}: HeaderProps) => (
+}: HeaderProperties) => (
   <header>
     <div className="wrapper">
       <div>
