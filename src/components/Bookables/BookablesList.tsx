@@ -1,7 +1,7 @@
-import { bookables } from '../../static.json';
 import { useState } from 'react';
 import classNames from 'classnames/dedupe';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { bookables } from '../../static.json';
 
 export default function BookablesList() {
   const group = 'Rooms';

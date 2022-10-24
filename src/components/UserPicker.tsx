@@ -1,4 +1,5 @@
 import { users } from '../static.json';
+
 export default function UserPicker() {
   return (
     <select>

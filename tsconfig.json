@@ -14,8 +14,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES6",
-    "useDefineForClassFields": true,
-    "exactOptionalPropertyTypes": true // https://www.typescriptlang.org/tsconfig#exactOptionalPropertyTypes
+    "useDefineForClassFields": true
   },
   "include": ["src", "tsconfig.node.json"],
   "references": [

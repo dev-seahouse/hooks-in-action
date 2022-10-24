@@ -1,5 +1,5 @@
 # whitelist (dot files are ignored by default)
-!.storybook 
+!.storybook
 !.eslintrc.js
 # ignore list
 /build/**
@@ -7,4 +7,5 @@
 /docs/**
 /jsdoc/**
 /tmp/**
-test.js
+/**/node_modules/*
+**/*.d.ts
