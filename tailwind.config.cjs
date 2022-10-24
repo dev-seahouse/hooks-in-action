@@ -5,7 +5,7 @@ module.exports = {
     colors: {
       primary: 'var(--primary)',
       secondary: 'var(--secondary)',
-      button: 'var(--button-bg)',
+      'button-primary': 'var(--button-bg)',
       text: {
         dark: 'var(--dark-text)',
         light: 'var(--light-text)',
