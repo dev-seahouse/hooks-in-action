@@ -16,15 +16,8 @@
     "plugin:react/jsx-runtime", // must be before react plugins
     "plugin:prettier/recommended" // must be last
   ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    },
-    "import/resolver": {
-      "node": true,
-      "typescript": true
-    }
-  },
+  "ignorePatterns": ["node_modules"],
+  "noInlineConfig": false,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -33,6 +26,66 @@
   "reportUnusedDisableDirectives": true,
   "root": true,
   "rules": {
+    "no-param-reassign": [
+      "error",
+      { "props": true, "ignorePropertyModificationsFor": ["state"] }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "after-used",
+        "ignoreRestSiblings": false,
+        "vars": "all"
+      }
+    ],
+    "import/default": "error",
+    "import/export": "error",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/first": "error",
+    "import/namespace": [
+      "error",
+      {
+        "allowComputed": true
+      }
+    ],
+    "import/newline-after-import": "error",
+    "import/no-absolute-path": "error",
+    "import/no-amd": "error",
+    "import/no-anonymous-default-export": "error",
+    "import/no-cycle": [
+      "error",
+      {
+        "ignoreExternal": true
+      }
+    ],
+    "import/no-duplicates": "error",
+    "import/no-extraneous-dependencies": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-named-as-default": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-named-default": "error",
+    "import/no-self-import": "error",
+    "import/no-useless-path-segments": "error",
+    "import/no-webpack-loader-syntax": "error",
+    "import/order": "error",
+    "react/prefer-read-only-props": "error",
+    "tailwindcss/no-custom-classname": "off",
+    "unicorn/better-regex": [
+      "error",
+      {
+        "sortCharacterClasses": false
+      }
+    ],
+    "unicorn/consistent-destructuring": "off", // buggy
     "unicorn/expiring-todo-comments": "off",
     "unicorn/filename-case": "off",
     "unicorn/no-array-callback-reference": "off",
@@ -40,34 +93,20 @@
     "unicorn/no-array-method-this-argument": "off",
     "unicorn/no-array-reduce": "off",
     "unicorn/no-for-loop": "off",
-    "unicorn/consistent-destructuring": "off", // buggy
-    "unicorn/better-regex": [
+    "unicorn/no-useless-undefined": [
       "error",
       {
-        "sortCharacterClasses": false
+        "checkArguments": false
       }
     ],
     "unicorn/prevent-abbreviations": [
       "error",
       {
-        "checkFilenames": false,
         "checkDefaultAndNamespaceImports": false,
+        "checkFilenames": false,
         "checkShorthandImports": false,
         "extendDefaultReplacements": false,
         "replacements": {
-          "whitelist": {
-            "include": true
-          },
-          "blacklist": {
-            "exclude": true
-          },
-          "master": {
-            "main": true
-          },
-          "slave": {
-            "secondary": true
-          },
-
           // Not part of `eslint-plugin-unicorn`
           "application": {
             "app": true
@@ -75,10 +114,12 @@
           "applications": {
             "apps": true
           },
-
           // Part of `eslint-plugin-unicorn`
           "arr": {
             "array": true
+          },
+          "blacklist": {
+            "exclude": true
           },
           "e": {
             "error": true,
@@ -90,8 +131,14 @@
           "elem": {
             "element": true
           },
+          "err": {
+            "error": true
+          },
           "len": {
             "length": true
+          },
+          "master": {
+            "main": true
           },
           "msg": {
             "message": true
@@ -124,6 +171,9 @@
           "ret": {
             "returnValue": true
           },
+          "slave": {
+            "secondary": true
+          },
           "str": {
             "string": true
           },
@@ -136,51 +186,20 @@
           "val": {
             "value": true
           },
-          "err": {
-            "error": true
+          "whitelist": {
+            "include": true
           }
         }
       }
-    ],
-    "import/default": "error",
-    "import/export": "error",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
-    "import/first": "error",
-    "import/namespace": [
-      "error",
-      {
-        "allowComputed": true
-      }
-    ],
-    "import/no-absolute-path": "error",
-    "import/no-anonymous-default-export": "error",
-    "import/no-named-default": "error",
-    "import/no-webpack-loader-syntax": "error",
-    "import/no-self-import": "error",
-    "import/no-cycle": [
-      "error",
-      {
-        "ignoreExternal": true
-      }
-    ],
-    "import/no-useless-path-segments": "error",
-    "import/newline-after-import": "error",
-    "import/no-amd": "error",
-    "import/no-duplicates": "error",
-    "import/no-extraneous-dependencies": "error",
-    "import/no-mutable-exports": "error",
-    "import/no-named-as-default-member": "error",
-    "import/no-named-as-default": "error",
-    "import/order": "error",
-    "tailwindcss/no-custom-classname": "off"
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": true,
+      "typescript": true
+    },
+    "react": {
+      "version": "detect"
+    }
   }
 }

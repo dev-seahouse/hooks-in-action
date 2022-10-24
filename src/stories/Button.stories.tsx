@@ -1,4 +1,3 @@
-import React from 'react';
 import type { ComponentStoryFn, ComponentMeta } from '@storybook/react';
 
 import { Button } from './Button';

@@ -9,14 +9,17 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "Node",
+    "noUnusedLocals": true,
     "noEmit": true,
+    "sourceMap": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "ES6",
     "useDefineForClassFields": true
   },
-  "include": ["src", "tsconfig.node.json"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/node_modules/*"],
   "references": [
     {
       "path": "./tsconfig.node.json"

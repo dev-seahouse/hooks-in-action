@@ -3,10 +3,10 @@
 !.eslintrc.js
 # ignore list
 /build/**
+/dist/**
 /coverage/**
 /docs/**
 /jsdoc/**
 /tmp/**
-**/node_modules/*
-*.d.ts
-/node_modules/
+node_modules
+

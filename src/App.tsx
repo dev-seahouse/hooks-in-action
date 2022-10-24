@@ -5,10 +5,10 @@ import UserPicker from './components/UserPicker';
 import BookablesPage from './pages/BookablesPage';
 import UsersPage from './pages/UsersPage';
 
-interface INavItem {
-  linkTo: string;
-  children: React.ReactNode;
-}
+type INavItem = {
+  readonly linkTo: string;
+  readonly children: React.ReactNode;
+};
 
 function NavItem({ linkTo, children }: INavItem) {
   return (

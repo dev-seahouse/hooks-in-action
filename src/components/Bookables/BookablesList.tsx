@@ -5,7 +5,7 @@ import { bookables } from '../../static.json';
 
 export default function BookablesList() {
   const group = 'Rooms';
-  const bookablesInGroup = bookables.filter((b) => b.group === group);
+  const bookablesInGroup = bookables.filter(b => b.group === group);
   const [bookableIndex, setBookableIndex] = useState(1);
   const [parent] = useAutoAnimate<HTMLUListElement>();
 
