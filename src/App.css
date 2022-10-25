@@ -28,34 +28,34 @@ header a.btn {
   cursor: pointer;
   box-sizing: border-box;
 }
+/*  */
+/* .btn:first-child { */
+/* margin-left: 0; */
+/* } */
+/*  */
+/* a.btn { */
+/* text-decoration: none; */
+/* background-color: var(--primary); */
+/* } */
 
-.btn:first-child {
-  margin-left: 0;
-}
-
-a.btn {
-  text-decoration: none;
-  background-color: var(--primary);
-}
-
-.btn-delete {
-  background: var(--error);
-  color: white;
-  margin-bottom: 0.5em;
-}
-
-.btn > svg:first-child {
-  margin-right: 0.4rem;
-}
-
-.btn > svg:last-child {
-  margin-left: 0.4rem;
-}
-
+/* .btn-delete { */
+/* background: var(--error); */
+/* color: white; */
+/* margin-bottom: 0.5em; */
+/* } */
+/*  */
+/* .btn > svg:first-child { */
+/* margin-right: 0.4rem; */
+/* } */
+/*  */
+/* .btn > svg:last-child { */
+/* margin-left: 0.4rem; */
+/* } */
+/*  */
 .btn:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
-
+/*  */
 .btn-header {
   background: var(--primary);
   border: 1px solid var(--button-bg);
@@ -95,29 +95,29 @@ main {
   padding: 0;
 }
 
-.items-list-nav .btn {
-  width: 100%;
-  background: var(--light-text);
-  color: var(--dark-text);
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  transition: all 0.4s ease;
-}
-
-.items-list-nav a {
-  display: block;
-  padding: 1em 2em;
-  text-decoration: none;
-}
-
-.items-list-nav .btn:hover {
-  cursor: pointer;
-  border: 1px solid var(--primary);
-}
-
-.items-list-nav .selected .btn {
-  background: var(--primary);
-  color: var(--light-text);
-}
+/* .items-list-nav .btn { */
+/* width: 100%; */
+/* background: var(--light-text); */
+/* color: var(--dark-text); */
+/* border: 1px solid rgba(0, 0, 0, 0.3); */
+/* transition: all 0.4s ease; */
+/* } */
+/*  */
+/* .items-list-nav a { */
+/* display: block; */
+/* padding: 1em 2em; */
+/* text-decoration: none; */
+/* } */
+/*  */
+/* .items-list-nav .btn:hover { */
+/* cursor: pointer; */
+/* border: 1px solid var(--primary); */
+/* } */
+/*  */
+/* .items-list-nav .selected .btn { */
+/* background: var(--primary); */
+/* color: var(--light-text); */
+/* } */
 
 .item {
   background: var(--secondary);

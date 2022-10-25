@@ -18,7 +18,10 @@
     "target": "ES6",
     "useDefineForClassFields": true
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*",
+    "vite.config.*, vitest.config.*, cypress.config.*, *.d.ts"
+  ],
   "exclude": ["node_modules", "**/node_modules/*"],
   "references": [
     {

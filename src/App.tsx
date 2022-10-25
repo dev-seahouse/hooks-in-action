@@ -13,7 +13,12 @@ type INavItem = {
 function NavItem({ linkTo, children }: INavItem) {
   return (
     <li className="my-0 ml-0 mr-4 inline-block p-0">
-      <Link to={linkTo} className="btn btn-header">
+      <Link
+        to={linkTo}
+        className="ml-2 box-border inline-flex cursor-pointer items-center justify-center rounded-3xl 
+                  border-none border-button-primary bg-primary
+                  px-6 py-2 text-base text-text-light transition-all hover:shadow-[0_2px_5px_rgba(0,0,0,0.4)]"
+      >
         {children}
       </Link>
     </li>
@@ -23,7 +28,7 @@ function NavItem({ linkTo, children }: INavItem) {
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div>
         <header className="m-0 flex items-center justify-center p-4">
           <nav>
             <ul className="m-0 list-none p-0">

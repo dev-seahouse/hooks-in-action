@@ -78,7 +78,8 @@
     "import/no-webpack-loader-syntax": "error",
     "import/order": "error",
     "react/prefer-read-only-props": "error",
-    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "off",
+    "tailwindcss/no-custom-classname": "warn",
     "unicorn/better-regex": [
       "error",
       {
@@ -200,6 +201,9 @@
     },
     "react": {
       "version": "detect"
+    },
+    "tailwindcss": {
+      "config": "./tailwind.config.cjs"
     }
   }
 }
