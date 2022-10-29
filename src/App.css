@@ -119,6 +119,23 @@ main {
 /* color: var(--light-text); */
 /* } */
 
+.booking-details h2 .btn {
+  background: var(--primary);
+  border: 1px solid var(--button-bg);
+  padding: 0.6em 0.5em 0.6em 0.6em;
+}
+.booking-details h2 .btn:hover {
+  border-color: white;
+}
+.booking-details h2 .btn > svg {
+  margin: 0;
+}
+
+.booking-details-fields .btn {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .item {
   background: var(--secondary);
   color: var(--light-text);
@@ -343,17 +360,7 @@ header .icon-loading {
   margin: 0;
   padding: 0;
 }
-.booking-details h2 .btn {
-  background: var(--primary);
-  border: 1px solid var(--button-bg);
-  padding: 0.6em 0.5em 0.6em 0.6em;
-}
-.booking-details h2 .btn:hover {
-  border-color: white;
-}
-.booking-details h2 .btn > svg {
-  margin: 0;
-}
+
 .booking-details p {
   padding: 0;
   margin: 0;
@@ -374,10 +381,6 @@ header .icon-loading {
 .booking-details > .controls {
   margin-top: 1em;
   text-align: center;
-}
-.booking-details-fields .btn {
-  padding-left: 1em;
-  padding-right: 1em;
 }
 
 .placeholder {

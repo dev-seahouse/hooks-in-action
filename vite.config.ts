@@ -1,8 +1,8 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
-
 import eslint from 'vite-plugin-eslint';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [

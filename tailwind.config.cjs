@@ -2,6 +2,7 @@
 
 module.exports = {
   content: ['./src/**/*.tsx', './index.html'],
+  purge: ['./*.html', './src/**/*.{js,ts,jsx,tsx,css}'],
   theme: {
     colors: {
       primary: 'var(--primary)',

@@ -12,7 +12,11 @@ export function UserList() {
           key={id}
           className={classNames({ selected: id === selectedUserId })}
         >
-          <button className="btn" onClick={() => setSelectedUserId(id)}>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => setSelectedUserId(id)}
+          >
             {name}
           </button>
         </li>

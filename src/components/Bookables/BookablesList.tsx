@@ -2,6 +2,7 @@ import { useState } from 'react';
 import classNames from 'classnames/dedupe';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { bookables } from '../../static.json';
+import Button from '../Button';
 
 export default function BookablesList() {
   const group = 'Rooms';
@@ -16,9 +17,13 @@ export default function BookablesList() {
           key={b.id}
           className={classNames({ selected: index === bookableIndex })}
         >
-          <button className="btn" onClick={() => setBookableIndex(index)}>
+          <Button
+            type="button"
+            // className="btn"
+            onPress={() => setBookableIndex(index)}
+          >
             {b.title}
-          </button>
+          </Button>
         </li>
       ))}
     </ul>

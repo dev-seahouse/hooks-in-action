@@ -15,8 +15,8 @@ function NavItem({ linkTo, children }: INavItem) {
     <li className="my-0 ml-0 mr-4 inline-block p-0">
       <Link
         to={linkTo}
-        className="ml-2 box-border inline-flex cursor-pointer items-center justify-center rounded-3xl 
-                  border-none border-button-primary bg-primary
+        className="ml-2 box-border inline-flex cursor-pointer items-center justify-center 
+                  rounded-3xl border-none bg-primary
                   px-6 py-2 text-base text-text-light transition-all hover:shadow-[0_2px_5px_rgba(0,0,0,0.4)]"
       >
         {children}
