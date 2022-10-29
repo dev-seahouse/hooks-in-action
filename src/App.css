@@ -1,8 +1,8 @@
 :root {
   --page-bg: #eee7be;
   --primary: #173f5f;
+  --primary-lighter: #20639b;
   --secondary: #3caea3;
-  --button-primary: #20639b;
   --error: #ed553b;
   --dark-text: #444;
   --light-text: #fff;
@@ -13,21 +13,21 @@ header a.btn {
 }
 /*  */
 
-.btn {
-  background: var(--button-bg);
-  color: var(--light-text);
-  border: none;
-  border-radius: 1.5rem;
-  padding: 0.5rem 1.5rem;
-  margin-left: 0.5rem;
-  font-size: 1rem;
-  transition: all 0.4s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-sizing: border-box;
-}
+/* .btn { */
+/* background: var(--button-bg); */
+/* color: var(--light-text); */
+/* border: none; */
+/* border-radius: 1.5rem; */
+/* padding: 0.5rem 1.5rem; */
+/* margin-left: 0.5rem; */
+/* font-size: 1rem; */
+/* transition: all 0.4s ease; */
+/* display: inline-flex; */
+/* align-items: center; */
+/* justify-content: center; */
+/* cursor: pointer; */
+/* box-sizing: border-box; */
+/* } */
 /*  */
 /* .btn:first-child { */
 /* margin-left: 0; */
@@ -52,18 +52,18 @@ header a.btn {
 /* margin-left: 0.4rem; */
 /* } */
 /*  */
-.btn:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-}
+/* .btn:hover { */
+/* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); */
+/* } */
 /*  */
-.btn-header {
-  background: var(--primary);
-  border: 1px solid var(--button-bg);
-}
-
-.btn-header:hover {
-  border-color: var(--light-text);
-}
+/* .btn-header { */
+/* background: var(--primary); */
+/* border: 1px solid var(--button-bg); */
+/* } */
+/*  */
+/* .btn-header:hover { */
+/* border-color: var(--light-text); */
+/* } */
 
 main {
   margin: 40px auto;
