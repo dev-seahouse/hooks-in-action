@@ -1,24 +1,21 @@
 import { useState } from 'react';
-import classNames from 'classnames/dedupe';
 import { users } from '../../static.json';
+import Button from '../Button';
 
 export function UserList() {
   const [selectedUserId, setSelectedUserId] = useState(1);
 
   return (
-    <ul className="users items-list-nav">
+    <ul className="items-list-nav my-4 mx-auto w-full list-none p-0">
       {users.map(({ id, name }) => (
-        <li
-          key={id}
-          className={classNames({ selected: id === selectedUserId })}
-        >
-          <button
-            type="button"
-            className="btn"
-            onClick={() => setSelectedUserId(id)}
+        <li key={id} className="p0 mt-0 ml-0 mb-4">
+          <Button
+            isFullWidth
+            isSelected={id === selectedUserId}
+            onPress={() => setSelectedUserId(id)}
           >
             {name}
-          </button>
+          </Button>
         </li>
       ))}
     </ul>

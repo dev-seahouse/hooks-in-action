@@ -1,16 +1,16 @@
 :root {
   --page-bg: #eee7be;
   --primary: #173f5f;
-  --primary-lighter: #20639b;
-  --secondary: #3caea3;
+  --secondary: #20639b;
+  --tertiary: #3caea3;
   --error: #ed553b;
   --dark-text: #444;
   --light-text: #fff;
 }
 
-header a.btn {
-  width: 9rem;
-}
+/* header a.btn { */
+/* width: 9rem; */
+/* } */
 /*  */
 
 /* .btn { */
@@ -65,10 +65,10 @@ header a.btn {
 /* border-color: var(--light-text); */
 /* } */
 
-main {
-  margin: 40px auto;
-  display: grid;
-}
+/* main { */
+/* margin: 40px auto; */
+/* display: grid; */
+/* } */
 
 .bookings-page {
   grid-template-columns: 1fr 5fr;
@@ -76,24 +76,24 @@ main {
   margin: 40px 20px;
 }
 
-.bookables-page,
-.users-page {
-  max-width: 70em;
-  grid-template-columns: 1fr 3fr;
-  grid-column-gap: 40px;
-}
+/* .bookables-page, */
+/* .users-page { */
+/* max-width: 70em; */
+/* grid-template-columns: 1fr 3fr; */
+/* grid-column-gap: 40px; */
+/* } */
 
-.items-list-nav {
-  margin: 1rem auto;
-  padding: 0;
-  list-style: none;
-  width: 100%;
-}
-
-.items-list-nav > li {
-  margin: 0 0 1rem;
-  padding: 0;
-}
+/* .items-list-nav { */
+/* margin: 1rem auto; */
+/* padding: 0; */
+/* list-style: none; */
+/* width: 100%; */
+/* } */
+/*  */
+/* .items-list-nav > li { */
+/* margin: 0 0 1rem; */
+/* padding: 0; */
+/* } */
 
 /* .items-list-nav .btn { */
 /* width: 100%; */

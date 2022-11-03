@@ -1,3 +1,4 @@
+import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
@@ -6,8 +7,8 @@ import eslint from 'vite-plugin-eslint';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
     chunkSplitPlugin(),
+    react(),
     eslint({
       fix: true, // https://www.npmjs.com/package/vite-plugin-eslint
     }),
@@ -17,6 +18,15 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react/jsx-runtime'],
+  },
+  resolve: {
+    alias: [
+      {
+        find: '@',
+        // eslint-disable-next-line unicorn/prefer-module
+        replacement: path.resolve(__dirname, 'src'),
+      },
+    ],
   },
   server: {
     host: 'localhost',

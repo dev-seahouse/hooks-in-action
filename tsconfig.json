@@ -17,8 +17,13 @@
     "strict": true,
     "target": "ES6",
     "composite": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
+
   "include": ["src/**/*", "src/**/*.json"],
   "references": [
     {
