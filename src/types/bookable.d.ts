@@ -6,3 +6,21 @@ export interface Bookable {
   sessions: Array<number>;
   days: Array<number>;
 }
+
+export type Days = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday'
+];
+
+export type Sessions = [
+  'Breakfast',
+  'Morning',
+  'Lunch',
+  'Afternoon',
+  'Evening'
+];

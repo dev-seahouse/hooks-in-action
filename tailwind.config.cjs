@@ -29,6 +29,12 @@ module.exports = {
       },
       error: 'var(--error)',
     },
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      square: 'square',
+    },
     extend: {},
   },
   plugins: [],

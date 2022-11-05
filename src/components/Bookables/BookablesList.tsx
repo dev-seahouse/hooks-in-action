@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import classnames from 'classnames/dedupe';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { FaArrowRight } from 'react-icons/fa';
-import { bookables } from '../../static.json';
+import { bookables, days, sessions } from '../../static.json';
 import Button from '../Button';
 import BookableListDetails from './BookableListDetails';
+import type { Days, Sessions } from '@/types/bookable';
 
 export default function BookablesList() {
   const [parent] = useAutoAnimate<HTMLUListElement>();
   const [group, setGroup] = useState('Kit');
-  // const [isShowDetails, setIsShowDetails] = useState(false);
   const [bookableIndex, setBookableIndex] = useState(0);
   const bookablesInGroup = bookables.filter(b => b.group === group);
+
+  const bookable = bookablesInGroup[bookableIndex];
 
   const groups = [...new Set(bookables.map(b => b.group))];
 
@@ -57,7 +59,13 @@ export default function BookablesList() {
           Next
         </Button>
       </div>
-      <BookableListDetails bookable={bookablesInGroup[bookableIndex]} />
+      {bookable ? (
+        <BookableListDetails
+          days={days as Days}
+          sessions={sessions as Sessions}
+          bookable={bookable}
+        />
+      ) : undefined}
     </React.Fragment>
   );
 }
