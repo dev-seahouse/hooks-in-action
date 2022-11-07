@@ -233,7 +233,9 @@
   "settings": {
     "import/resolver": {
       "node": true,
-      "typescript": true
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
     },
     "react": {
       "version": "detect"

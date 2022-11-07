@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import classnames from 'classnames/dedupe';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { FaArrowRight } from 'react-icons/fa';
-import { bookables, days, sessions } from '../../static.json';
 import Button from '../Button';
+import { bookables, days, sessions } from '../../static.json';
 import BookableListDetails from './BookableListDetails';
 import type { Days, Sessions } from '@/types/bookable';
 

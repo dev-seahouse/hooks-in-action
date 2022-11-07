@@ -7,7 +7,7 @@ import eslint from 'vite-plugin-eslint';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    chunkSplitPlugin(),
+    chunkSplitPlugin() as Plugin,
     react(),
     eslint({
       fix: true, // https://www.npmjs.com/package/vite-plugin-eslint
