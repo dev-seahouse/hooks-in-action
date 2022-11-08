@@ -1,4 +1,4 @@
-import path from 'node:path';
+import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
@@ -22,9 +22,9 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '@',
+        find: /^@\/(.+)/,
         // eslint-disable-next-line unicorn/prefer-module
-        replacement: path.resolve(__dirname, 'src'),
+        replacement: `${resolve(__dirname, 'src')}/$1`,
       },
     ],
   },
