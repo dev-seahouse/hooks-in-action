@@ -1,9 +1,16 @@
 import './App.css';
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Link,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import { FaCalendarAlt, FaDoorOpen, FaUsers } from 'react-icons/fa';
 import UserPicker from './components/UserPicker';
 import BookablesPage from './pages/BookablesPage';
 import UsersPage from './pages/UsersPage';
+import BookingsPage from './pages/BookingsPage';
 
 type INavItem = {
   readonly linkTo: string;
@@ -54,9 +61,10 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/bookings" />
+          <Route path="/bookings" element={<BookingsPage />} />
           <Route path="/bookables" element={<BookablesPage />} />
           <Route path="/users" element={<UsersPage />} />
+          <Route path="*" element={<Navigate to="/bookings" replace />} />
         </Routes>
       </Router>
     </div>

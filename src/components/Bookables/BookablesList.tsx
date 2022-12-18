@@ -1,33 +1,40 @@
-import React, { useState } from 'react';
+import { useReducer, useRef, Fragment } from 'react';
 import classnames from 'classnames/dedupe';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { FaArrowRight } from 'react-icons/fa';
 import Button from '../Button';
-import { bookables, days, sessions } from '../../static.json';
 import BookableListDetails from './BookableListDetails';
-import type { Days, Sessions } from '@/types/bookable';
+import bookablesReducer from './reducer';
+import { ACTION_TYPES } from './actionTypes';
+import { bookables as bookablesData, days, sessions } from '@/static.json';
+import type { Bookable, Days, Sessions } from '@/types/bookable';
 
 export default function BookablesList() {
+  const { current: initialState } = useRef({
+    bookables: bookablesData,
+    group: 'Kit' as Bookable['group'],
+    bookableIndex: 0,
+  });
+  const [{ bookables, group, bookableIndex }, dispatch] = useReducer(
+    bookablesReducer,
+    initialState
+  );
   const [parent] = useAutoAnimate<HTMLUListElement>();
-  const [group, setGroup] = useState('Kit');
-  const [bookableIndex, setBookableIndex] = useState(0);
   const bookablesInGroup = bookables.filter(b => b.group === group);
-
+  const groups = [...new Set(bookables.map(b => b.group))];
   const bookable = bookablesInGroup[bookableIndex];
 
-  const groups = [...new Set(bookables.map(b => b.group))];
-
   function handleNextButtonPress() {
-    setBookableIndex(i => (i + 1) % bookablesInGroup.length);
+    dispatch({ type: ACTION_TYPES.NEXT_BOOKABLE });
   }
 
   function handleGroupChange(event: React.ChangeEvent<HTMLSelectElement>) {
     const { value } = event.target;
-    setGroup(value);
+    dispatch({ type: ACTION_TYPES.SET_GROUP, payload: value });
   }
 
   return (
-    <React.Fragment>
+    <Fragment>
       <div>
         <select
           name="bookable-groups"
@@ -47,7 +54,9 @@ export default function BookablesList() {
               <Button
                 isFullWidth
                 isSelected={index === bookableIndex}
-                onPress={() => setBookableIndex(index)}
+                onPress={() =>
+                  dispatch({ type: ACTION_TYPES.SET_BOOKABLE, payload: index })
+                }
               >
                 {b.title}
               </Button>
@@ -66,6 +75,6 @@ export default function BookablesList() {
           bookable={bookable}
         />
       ) : undefined}
-    </React.Fragment>
+    </Fragment>
   );
 }

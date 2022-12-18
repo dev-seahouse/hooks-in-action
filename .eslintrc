@@ -64,15 +64,16 @@
       }
     ],
     "import/no-duplicates": "error",
-    "import/no-extraneous-dependencies": "error",
     "import/no-mutable-exports": "error",
+    // https://github.com/gxmari007/vite-plugin-eslint/issues/47
+    "import/no-extraneous-dependencies": 0,
     "import/no-named-as-default": "error",
     "import/no-named-as-default-member": "error",
     "import/no-named-default": "error",
     "import/no-self-import": "error",
     "import/no-useless-path-segments": "error",
     "import/no-webpack-loader-syntax": "error",
-    "import/order": "error",
+    "import/order": "warn",
     "no-param-reassign": [
       "error",
       {

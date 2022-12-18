@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
 import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 import eslint from 'vite-plugin-eslint';
@@ -11,6 +11,7 @@ export default defineConfig({
     react(),
     eslint({
       fix: true, // https://www.npmjs.com/package/vite-plugin-eslint
+      emitError: false,
     }),
   ],
   build: {

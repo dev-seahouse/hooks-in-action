@@ -1,8 +1,8 @@
-import UserList from '../components/UserList';
+import UserList from '@/components/UserList';
 
 function UsersPage() {
   return (
-    <main className="users-page grid max-w-[70em] grid-cols-[1fr_3fr] gap-y-10">
+    <main className="grid max-w-[70em] grid-cols-[1fr_3fr] gap-x-10">
       <UserList />
     </main>
   );
