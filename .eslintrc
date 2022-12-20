@@ -131,6 +131,7 @@
     "unicorn/no-array-method-this-argument": "off",
     "unicorn/no-array-reduce": "off",
     "unicorn/no-for-loop": "off",
+    "unicorn/no-null": "off",
     "unicorn/no-useless-undefined": [
       "error",
       {

@@ -1,28 +1,41 @@
-import { useReducer, useRef, Fragment } from 'react';
+import { useReducer, useRef, Fragment, useEffect } from 'react';
 import classnames from 'classnames/dedupe';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { FaArrowRight } from 'react-icons/fa';
 import Button from '../Button';
+import { Spinner } from '../UI/Spinner';
 import BookableListDetails from './BookableListDetails';
-import bookablesReducer from './reducer';
+import bookablesReducer, { defaultState } from './reducer';
 import { ACTION_TYPES } from './actionTypes';
-import { bookables as bookablesData, days, sessions } from '@/static.json';
-import type { Bookable, Days, Sessions } from '@/types/bookable';
+import type { BookablesState } from './reducer';
+import getData from '@/utils/getData';
+import type { Days, Sessions } from '@/types/bookable';
+import { days, sessions } from '@/static.json';
 
 export default function BookablesList() {
-  const { current: initialState } = useRef({
-    bookables: bookablesData,
-    group: 'Kit' as Bookable['group'],
-    bookableIndex: 0,
-  });
-  const [{ bookables, group, bookableIndex }, dispatch] = useReducer(
-    bookablesReducer,
-    initialState
-  );
+  const { current: initialState } = useRef<BookablesState>(defaultState);
+  const [{ bookables, group, bookableIndex, error, isLoading }, dispatch] =
+    useReducer(bookablesReducer, initialState);
   const [parent] = useAutoAnimate<HTMLUListElement>();
   const bookablesInGroup = bookables.filter(b => b.group === group);
   const groups = [...new Set(bookables.map(b => b.group))];
   const bookable = bookablesInGroup[bookableIndex];
+
+  useEffect(() => {
+    dispatch({
+      type: ACTION_TYPES.FETCH_BOOKABLES_REQUEST,
+    });
+    getData('http://localhost:3001/bookables')
+      .then(bookables =>
+        dispatch({
+          type: ACTION_TYPES.FETCH_BOOKABLES_SUCCESS,
+          payload: bookables,
+        })
+      )
+      .catch(error =>
+        dispatch({ type: ACTION_TYPES.FETCH_BOOKABLES_ERROR, payload: error })
+      );
+  }, []);
 
   function handleNextButtonPress() {
     dispatch({ type: ACTION_TYPES.NEXT_BOOKABLE });
@@ -31,6 +44,18 @@ export default function BookablesList() {
   function handleGroupChange(event: React.ChangeEvent<HTMLSelectElement>) {
     const { value } = event.target;
     dispatch({ type: ACTION_TYPES.SET_GROUP, payload: value });
+  }
+
+  if (error) {
+    return <p>{error.message}</p>;
+  }
+
+  if (isLoading) {
+    return (
+      <p>
+        <Spinner /> Loading bookables...
+      </p>
+    );
   }
 
   return (

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Spinner } from './UI/Spinner';
 import { User } from '@/types/user';
 
 export default function UserPicker() {
@@ -10,9 +9,10 @@ export default function UserPicker() {
       .then(data => setUsers(data));
   }, []);
 
+  console.log(users);
+
   return (
     <select role="listbox">
-      if (!users) return <Spinner />
       {users?.map(u => (
         <option key={u.id} value={u.id} role="option">
           {u.name}
