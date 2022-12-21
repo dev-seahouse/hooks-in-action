@@ -1,13 +1,20 @@
 import { useState, useId } from 'react';
+import Button from '../Button';
 import { Bookable, Days, Sessions } from '@/types/bookable';
 
 interface Props {
   bookable: Bookable;
   days: Days;
   sessions: Sessions;
+  onStopButtonClick: () => void;
 }
 
-function BookableDetails({ bookable, days, sessions }: Props) {
+function BookableDetails({
+  bookable,
+  days,
+  sessions,
+  onStopButtonClick,
+}: Props) {
   const [shouldShowDetails, setShouldShowDetails] = useState(false);
   const checkboxId = useId();
   return (
@@ -15,15 +22,20 @@ function BookableDetails({ bookable, days, sessions }: Props) {
       {/* item header */}
       <div className="flex items-center justify-between border-b-8 border-solid border-white bg-primary p-4 ">
         <h2 className="text-2xl font-bold">{bookable.title}</h2>
-        <div className="space-x-1">
-          <input
-            type="checkbox"
-            id={checkboxId}
-            onChange={() =>
-              setShouldShowDetails(previousState => !previousState)
-            }
-          />
-          <label htmlFor={checkboxId}>Show Details</label>
+        <div className="flex items-center">
+          <div className="space-x-1">
+            <input
+              type="checkbox"
+              id={checkboxId}
+              onChange={() =>
+                setShouldShowDetails(previousState => !previousState)
+              }
+            />
+            <label htmlFor={checkboxId}>Show Details</label>
+          </div>
+          <Button variant="secondary" onPress={onStopButtonClick}>
+            Stop
+          </Button>
         </div>
       </div>
       {/* notes */}

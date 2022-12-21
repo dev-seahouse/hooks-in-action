@@ -9,8 +9,6 @@ export default function UserPicker() {
       .then(data => setUsers(data));
   }, []);
 
-  console.log(users);
-
   return (
     <select role="listbox">
       {users?.map(u => (

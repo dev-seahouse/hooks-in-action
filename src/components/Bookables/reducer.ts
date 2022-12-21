@@ -1,7 +1,7 @@
 import { ErrorWithMessage } from '../../utils/ErrorUtils/types.d';
 import { ACTION_TYPES } from './actionTypes';
 import { BookableActions } from './types.d';
-import { Bookable } from '@/types/bookable';
+import type { Bookable } from '@/types/bookable';
 
 export interface BookablesState {
   bookables: Bookable[];
@@ -15,10 +15,21 @@ export interface BookablesState {
 export const defaultState = {
   bookables: [],
   group: 'Kit' as Bookable['group'],
-  bookableIndex: 0,
   isLoading: false,
+  bookableIndex: 0,
   error: null,
 };
+
+function getNextBookableIndex(
+  currIdx: number,
+  currBookables: Bookable[],
+  group: Bookable['group']
+): number {
+  if (currBookables?.length === 0 || !group) {
+    return 0;
+  }
+  return (currIdx + 1) % currBookables.filter(b => b.group === group).length;
+}
 
 export default function bookablesReducer(
   state: BookablesState,
@@ -28,9 +39,11 @@ export default function bookablesReducer(
     case ACTION_TYPES.NEXT_BOOKABLE: {
       return {
         ...state,
-        bookableIndex:
-          (state.bookableIndex + 1) %
-          state.bookables.filter(b => b.group === state.group).length,
+        bookableIndex: getNextBookableIndex(
+          state.bookableIndex,
+          state.bookables,
+          state.group
+        ),
       };
     }
     case ACTION_TYPES.SET_GROUP: {
@@ -67,6 +80,7 @@ export default function bookablesReducer(
         ...state,
         isLoading: false,
         error: payload,
+        bookables: [],
       };
     }
     default: {

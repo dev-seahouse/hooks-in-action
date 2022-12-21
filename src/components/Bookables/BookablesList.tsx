@@ -13,13 +13,20 @@ import type { Days, Sessions } from '@/types/bookable';
 import { days, sessions } from '@/static.json';
 
 export default function BookablesList() {
-  const { current: initialState } = useRef<BookablesState>(defaultState);
-  const [{ bookables, group, bookableIndex, error, isLoading }, dispatch] =
-    useReducer(bookablesReducer, initialState);
+  const { current: initialStateRef } = useRef<BookablesState>(defaultState);
+
+  const [state, dispatch] = useReducer(bookablesReducer, initialStateRef);
+
+  const { bookables, group, bookableIndex, error, isLoading } = state;
+
   const [parent] = useAutoAnimate<HTMLUListElement>();
   const bookablesInGroup = bookables.filter(b => b.group === group);
   const groups = [...new Set(bookables.map(b => b.group))];
   const bookable = bookablesInGroup[bookableIndex];
+
+  const timerRef = useRef<NodeJS.Timer>();
+
+  const nextButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     dispatch({
@@ -37,8 +44,17 @@ export default function BookablesList() {
       );
   }, []);
 
+  function stopPresentation() {
+    clearInterval(timerRef.current);
+  }
+
   function handleNextButtonPress() {
     dispatch({ type: ACTION_TYPES.NEXT_BOOKABLE });
+  }
+
+  function handleBookablePress(index: number) {
+    nextButtonRef.current && nextButtonRef.current.focus();
+    return () => dispatch({ type: ACTION_TYPES.SET_BOOKABLE, payload: index });
   }
 
   function handleGroupChange(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -79,16 +95,18 @@ export default function BookablesList() {
               <Button
                 isFullWidth
                 isSelected={index === bookableIndex}
-                onPress={() =>
-                  dispatch({ type: ACTION_TYPES.SET_BOOKABLE, payload: index })
-                }
+                onPress={handleBookablePress(index)}
               >
                 {b.title}
               </Button>
             </li>
           ))}
         </ul>
-        <Button variant="secondary" onPress={handleNextButtonPress}>
+        <Button
+          variant="secondary"
+          onPress={handleNextButtonPress}
+          ref={nextButtonRef}
+        >
           <FaArrowRight className="mr-1 text-white" />
           Next
         </Button>
@@ -98,6 +116,7 @@ export default function BookablesList() {
           days={days as Days}
           sessions={sessions as Sessions}
           bookable={bookable}
+          onStopButtonClick={stopPresentation}
         />
       ) : undefined}
     </Fragment>
