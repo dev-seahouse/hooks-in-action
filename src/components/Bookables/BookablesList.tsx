@@ -7,15 +7,15 @@ import { Spinner } from '../UI/Spinner';
 import BookableListDetails from './BookableListDetails';
 import bookablesReducer, { defaultState } from './reducer';
 import { ACTION_TYPES } from './actionTypes';
-import type { BookablesState } from './reducer';
 import getData from '@/utils/getData';
 import type { Days, Sessions } from '@/types/bookable';
 import { days, sessions } from '@/static.json';
+// import type { BookablesState } from './reducer';
 
 export default function BookablesList() {
-  const { current: initialStateRef } = useRef<BookablesState>(defaultState);
+  // const { current: initialStateRef } = useRef<BookablesState>(defaultState);
 
-  const [state, dispatch] = useReducer(bookablesReducer, initialStateRef);
+  const [state, dispatch] = useReducer(bookablesReducer, defaultState);
 
   const { bookables, group, bookableIndex, error, isLoading } = state;
 
@@ -24,7 +24,7 @@ export default function BookablesList() {
   const groups = [...new Set(bookables.map(b => b.group))];
   const bookable = bookablesInGroup[bookableIndex];
 
-  const timerRef = useRef<NodeJS.Timer>();
+  // const timerRef = useRef<NodeJS.Timer>();
 
   const nextButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -32,6 +32,7 @@ export default function BookablesList() {
     dispatch({
       type: ACTION_TYPES.FETCH_BOOKABLES_REQUEST,
     });
+
     getData('http://localhost:3001/bookables')
       .then(bookables =>
         dispatch({
@@ -44,17 +45,15 @@ export default function BookablesList() {
       );
   }, []);
 
-  function stopPresentation() {
-    clearInterval(timerRef.current);
-  }
-
   function handleNextButtonPress() {
     dispatch({ type: ACTION_TYPES.NEXT_BOOKABLE });
   }
 
   function handleBookablePress(index: number) {
-    nextButtonRef.current && nextButtonRef.current.focus();
-    return () => dispatch({ type: ACTION_TYPES.SET_BOOKABLE, payload: index });
+    return () => {
+      dispatch({ type: ACTION_TYPES.SET_BOOKABLE, payload: index });
+      nextButtonRef.current && nextButtonRef.current.focus();
+    };
   }
 
   function handleGroupChange(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -105,6 +104,7 @@ export default function BookablesList() {
         <Button
           variant="secondary"
           onPress={handleNextButtonPress}
+          autoFocus
           ref={nextButtonRef}
         >
           <FaArrowRight className="mr-1 text-white" />
@@ -116,7 +116,6 @@ export default function BookablesList() {
           days={days as Days}
           sessions={sessions as Sessions}
           bookable={bookable}
-          onStopButtonClick={stopPresentation}
         />
       ) : undefined}
     </Fragment>

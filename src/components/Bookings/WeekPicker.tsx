@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import { FaCalendarDay, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Button from '../Button';
+import { DateField } from '../UI/DateField';
 import weekReducer, { WEEK_ACTION_TYPES } from './weekReducer';
 import { getWeek } from '@/utils/date-wrangler';
 
@@ -13,7 +14,7 @@ export function WeekPicker({ date }: Props) {
   console.log('hello');
   return (
     <nav>
-      <div className="align-center flex w-full justify-between">
+      <div className="flex w-full items-center justify-around">
         <Button
           variant="secondary"
           onPress={() => dispatch({ type: WEEK_ACTION_TYPES.PREV_WEEK })}
@@ -29,6 +30,14 @@ export function WeekPicker({ date }: Props) {
           <FaCalendarDay className="mr-1 inline text-sm" />
           <span>Today</span>
         </Button>
+
+        <div className="flex">
+          <DateField />
+          <Button variant="secondary">
+            <FaCalendarDay className="mr-1 inline text-sm" />
+            <span>Go</span>
+          </Button>
+        </div>
 
         <Button
           variant="secondary"

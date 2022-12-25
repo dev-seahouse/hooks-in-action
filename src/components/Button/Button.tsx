@@ -2,7 +2,7 @@ import React from 'react';
 import type { AriaButtonProps } from 'react-aria';
 import { useButton, FocusRing } from 'react-aria';
 import classnames from 'classnames/dedupe';
-import useForkRef from '@/utils/useForkRef';
+import { useObjectRef } from '@/utils/useObjectRef';
 
 const baseClass = `ml-2 box-border
                   cursor-pointer
@@ -34,13 +34,15 @@ export const Button = React.forwardRef(function Button(
     variant = 'primary',
     isSelected = false,
     isFullWidth = false,
+    autoFocus = false,
     ...props
   }: ButtonProps,
-  ref: React.Ref<HTMLButtonElement>
+  forwardRef: React.Ref<HTMLButtonElement>
 ) {
+  const ref = useObjectRef(forwardRef);
   const ownRef = React.useRef<HTMLButtonElement>(null);
-  const mergedRef = useForkRef(ref, ownRef);
-  const { buttonProps } = useButton(props, ownRef);
+  const buttonRef = ref || ownRef;
+  const { buttonProps } = useButton(props, buttonRef);
   const classes = classnames(baseClass, variants[variant], {
     'w-full': isFullWidth,
   });
@@ -49,13 +51,14 @@ export const Button = React.forwardRef(function Button(
     <FocusRing
       focusRingClass="ring ring-offset-1 ring-primary"
       focusClass="shadow-[0_2px_5px_rgba(0,0,0,0.4)]"
+      autoFocus={autoFocus}
     >
       <button
         data-selected={isSelected}
         aria-selected={isSelected}
         className={classes}
+        ref={buttonRef}
         {...buttonProps}
-        ref={mergedRef}
       >
         {children}
       </button>

@@ -1,20 +1,13 @@
 import { useState, useId } from 'react';
-import Button from '../Button';
 import { Bookable, Days, Sessions } from '@/types/bookable';
 
 interface Props {
   bookable: Bookable;
   days: Days;
   sessions: Sessions;
-  onStopButtonClick: () => void;
 }
 
-function BookableDetails({
-  bookable,
-  days,
-  sessions,
-  onStopButtonClick,
-}: Props) {
+function BookableDetails({ bookable, days, sessions }: Props) {
   const [shouldShowDetails, setShouldShowDetails] = useState(false);
   const checkboxId = useId();
   return (
@@ -33,9 +26,6 @@ function BookableDetails({
             />
             <label htmlFor={checkboxId}>Show Details</label>
           </div>
-          <Button variant="secondary" onPress={onStopButtonClick}>
-            Stop
-          </Button>
         </div>
       </div>
       {/* notes */}
